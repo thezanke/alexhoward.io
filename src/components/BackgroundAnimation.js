@@ -4,7 +4,7 @@ import random from 'lodash/random';
 import sample from 'lodash/sample';
 
 const MIN_COLOR = 145;
-const MAX_COLOR = 225;
+const MAX_COLOR = 215;
 
 const makeCircle = () => {
   const r = 10;
