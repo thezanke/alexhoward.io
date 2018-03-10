@@ -19,37 +19,32 @@ injectGlobal`
   }
 `;
 
-const MazeContainer = styled.div`
+const MazeHolder = styled.div`
   position: fixed;
   top: 0;
   left: 0;
 `;
 
-const RootContainer = styled.div`
-  font-size: 16px;
-  display: flex;
+const ContentHolder = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  > div {
-    flex: 0 1;
-  }
 `;
 
 const App = () => (
   <Fragment>
-    <MazeContainer>
+    <MazeHolder>
       <Maze />
-    </MazeContainer>
-    <RootContainer>
+    </MazeHolder>
+    <ContentHolder>
       <Card />
-    </RootContainer>
+    </ContentHolder>
   </Fragment>
 );
 
