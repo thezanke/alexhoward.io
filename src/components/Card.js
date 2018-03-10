@@ -18,6 +18,7 @@ const CardRoot = styled.div`
     padding: 0.8rem;
     background-color: rgba(0, 0, 0, 0.66);
     border-radius: ${BORDER_RADIUS}px;
+    border: 2px solid black;
   }
 `;
 
@@ -51,7 +52,7 @@ const GravatarRoot = styled.div`
   height: ${GRAVATAR_SIZE}px;
   border-radius: ${BORDER_RADIUS}px;
   overflow: hidden;
-  border: 3px solid black;
+  border: 2px solid black;
   box-sizing: border-box;
 
   img {
