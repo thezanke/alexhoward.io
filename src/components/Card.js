@@ -51,6 +51,8 @@ const GravatarRoot = styled.div`
   height: ${GRAVATAR_SIZE}px;
   border-radius: ${BORDER_RADIUS}px;
   overflow: hidden;
+  border: 3px solid black;
+  box-sizing: border-box;
 
   img {
     display: block;
