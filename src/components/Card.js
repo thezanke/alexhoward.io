@@ -16,7 +16,7 @@ const CardRoot = styled.div`
     box-sizing: border-box;
     width: 460px;
     padding: 0.8rem;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.66);
     border-radius: ${BORDER_RADIUS}px;
   }
 `;

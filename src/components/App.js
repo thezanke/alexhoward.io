@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
+import BackgroundAnimation from './BackgroundAnimation';
 import Card from './Card';
-import Maze from './Maze';
 
 injectGlobal`
   html, body {
@@ -19,7 +19,7 @@ injectGlobal`
   }
 `;
 
-const MazeHolder = styled.div`
+const BackgroundHolder = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -35,14 +35,14 @@ const ContentHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.66);
 `;
 
 const App = () => (
   <Fragment>
-    <MazeHolder>
-      <Maze />
-    </MazeHolder>
+    <BackgroundHolder>
+      <BackgroundAnimation />
+    </BackgroundHolder>
     <ContentHolder>
       <Card />
     </ContentHolder>
