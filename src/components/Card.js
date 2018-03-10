@@ -61,7 +61,7 @@ const GravatarRoot = styled.div`
 
 const Gravatar = () => (
   <GravatarRoot>
-    <img src={`http://gravatar.com/avatar/f16320597c08a8462094030bcee31207?size=${GRAVATAR_SIZE}`} alt="gravatar" />
+    <img src={`//gravatar.com/avatar/f16320597c08a8462094030bcee31207?size=${GRAVATAR_SIZE}`} alt="gravatar" />
   </GravatarRoot>
 );
 
