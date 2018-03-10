@@ -21,7 +21,7 @@ class BackgroundAnimation extends PureComponent {
   animate = () => {
     const { canvas, circle, ctx } = this;
 
-    ctx.fillStyle = 'hsl(' + circle.color++ + ', 100%, 50%)';
+    ctx.fillStyle = `hsl(${circle.color++}, 100%, 50%)`;
     ctx.beginPath();
     ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, true);
     ctx.fill();
