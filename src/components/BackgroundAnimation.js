@@ -5,6 +5,7 @@ import sample from 'lodash/sample';
 
 const MIN_COLOR = 145;
 const MAX_COLOR = 215;
+const COLOR_STEP = 0.5;
 
 const makeCircle = () => {
   const r = 10;
@@ -14,7 +15,15 @@ const makeCircle = () => {
       ? [random(0, window.innerWidth), sample([-r / 2, window.innerHeight + r / 2])]
       : [sample([-r / 2, window.innerWidth + r / 2]), random(0, window.innerHeight)];
 
-  return { x, y, r: 10, vx: sample([-4, 4]), vy: sample([-4, 4]), color: (MIN_COLOR + MAX_COLOR) / 2, vcolor: -0.25 };
+  return {
+    x,
+    y,
+    r: 10,
+    vx: sample([-4, 4]),
+    vy: sample([-4, 4]),
+    color: random(MIN_COLOR, MAX_COLOR),
+    vcolor: sample([-COLOR_STEP, COLOR_STEP])
+  };
 };
 
 class BackgroundAnimation extends PureComponent {
