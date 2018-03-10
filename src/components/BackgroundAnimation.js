@@ -25,7 +25,6 @@ class BackgroundAnimation extends PureComponent {
     ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, true);
     ctx.fill();
 
-    //time to animate our circles ladies and gentlemen.
     if (circle.x - circle.r + circle.vx < 0 || circle.x + circle.r + circle.vx > 0 + canvas.width) {
       circle.vx = -circle.vx;
     }
