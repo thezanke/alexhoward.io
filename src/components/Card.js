@@ -15,7 +15,7 @@ const CardRoot = styled.div`
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: ${BORDER_RADIUS}px;
     border: 1px solid black;
-    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.8);
   }
 `;
 
