@@ -25,12 +25,31 @@ const MazeContainer = styled.div`
   left: 0;
 `;
 
+const RootContainer = styled.div`
+  font-size: 16px;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    flex: 0 1;
+  }
+`;
+
 const App = () => (
   <Fragment>
     <MazeContainer>
       <Maze />
     </MazeContainer>
-    <Card />
+    <RootContainer>
+      <Card />
+    </RootContainer>
   </Fragment>
 );
 

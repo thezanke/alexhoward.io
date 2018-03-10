@@ -7,28 +7,14 @@ const GRAVATAR_SIZE = 128;
 const GRAVATAR_URL = 'http://gravatar.com/avatar/f16320597c08a8462094030bcee31207?size=' + GRAVATAR_SIZE;
 const ICON_SIZE = 35;
 
-const RootLayout = styled.div`
-  font-size: 16px;
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  > div {
-    flex: 0 1;
+const CardRoot = styled.div`
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 440px;
+    height: ${GRAVATAR_SIZE}px;
   }
-`;
-
-const PersonalInfo = styled.main`
-  display: flex;
-  justify-content: space-between;
-  width: 440px;
-  height: ${GRAVATAR_SIZE}px;
 `;
 
 const Content = styled.div`
@@ -104,26 +90,24 @@ const SocialLinks = () => (
 );
 
 const Card = () => (
-  <RootLayout>
-    <div>
-      <PersonalInfo>
-        <div>
-          <Gravatar />
-        </div>
-        <div>
-          <Content>
-            <div>
-              <h1>Alex Howard</h1>
-              <em>Giant Software Developer</em>
-            </div>
-            <div>
-              <SocialLinks />
-            </div>
-          </Content>
-        </div>
-      </PersonalInfo>
+  <CardRoot>
+    <div className="flex-container">
+      <div>
+        <Gravatar />
+      </div>
+      <div>
+        <Content>
+          <div>
+            <h1>Alex Howard</h1>
+            <em>Giant Software Developer</em>
+          </div>
+          <div>
+            <SocialLinks />
+          </div>
+        </Content>
+      </div>
     </div>
-  </RootLayout>
+  </CardRoot>
 );
 
 export default Card;
