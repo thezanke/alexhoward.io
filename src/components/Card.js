@@ -50,7 +50,7 @@ const Content = styled.div`
     margin: 0;
     padding: 0;
     font-family: Helvetica, sans-serif;
-    font-weight: bold;
+    font-weight: 400;
     font-size: 3rem;
     line-height: 2.5rem;
     vertical-align: top;
