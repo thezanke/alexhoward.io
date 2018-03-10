@@ -26,11 +26,17 @@ class BackgroundAnimation extends PureComponent {
     ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, true);
     ctx.fill();
 
-    if (circle.x - circle.r + circle.vx < 0 || circle.x + circle.r + circle.vx > 0 + canvas.width) {
+    if (
+      (circle.x - circle.r + circle.vx < 0 && circle.vx < 0) ||
+      (circle.x + circle.r + circle.vx > canvas.width && circle.vx > 0)
+    ) {
       circle.vx = -circle.vx;
     }
 
-    if (circle.y + circle.r + circle.vy > 0 + canvas.height || circle.y - circle.r + circle.vy < 0) {
+    if (
+      (circle.y + circle.r + circle.vy > canvas.height && circle.vy > 0) ||
+      (circle.y - circle.r + circle.vy < 0 && circle.vy < 0)
+    ) {
       circle.vy = -circle.vy;
     }
 
