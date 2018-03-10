@@ -56,7 +56,6 @@ class BackgroundAnimation extends PureComponent {
       }
 
       circle.color += circle.vcolor;
-      console.log(circle.color);
     });
 
     requestAnimationFrame(this.animate);
