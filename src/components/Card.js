@@ -6,14 +6,18 @@ import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
 const GRAVATAR_SIZE = 128;
 const GRAVATAR_URL = 'http://gravatar.com/avatar/f16320597c08a8462094030bcee31207?size=' + GRAVATAR_SIZE;
 const ICON_SIZE = 35;
+const BORDER_RADIUS = GRAVATAR_SIZE / 8;
 
 const CardRoot = styled.div`
-  .flex-container {
+  > div:first-child {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 440px;
-    height: ${GRAVATAR_SIZE}px;
+    box-sizing: border-box;
+    width: 460px;
+    padding: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: ${BORDER_RADIUS}px;
   }
 `;
 
@@ -42,11 +46,15 @@ const Content = styled.div`
 `;
 
 const GravatarRoot = styled.div`
-  display: inline-block;
+  display: block;
   width: ${GRAVATAR_SIZE}px;
   height: ${GRAVATAR_SIZE}px;
-  border-radius: ${GRAVATAR_SIZE / 8}px;
+  border-radius: ${BORDER_RADIUS}px;
   overflow: hidden;
+
+  img {
+    display: block;
+  }
 `;
 
 const Gravatar = () => (
@@ -91,7 +99,7 @@ const SocialLinks = () => (
 
 const Card = () => (
   <CardRoot>
-    <div className="flex-container">
+    <div>
       <div>
         <Gravatar />
       </div>

@@ -14,7 +14,7 @@ injectGlobal`
   }
 
   body {
-    background-color: black;
+    background-color: #333;
     color: white;
   }
 `;
@@ -35,6 +35,7 @@ const ContentHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const App = () => (
