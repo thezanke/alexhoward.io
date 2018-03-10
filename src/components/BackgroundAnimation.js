@@ -19,8 +19,8 @@ const makeCircle = () => {
     x,
     y,
     r: 10,
-    vx: sample([-4, 4]),
-    vy: sample([-4, 4]),
+    vx: sample([-3, 3]),
+    vy: sample([-3, 3]),
     color: random(MIN_COLOR, MAX_COLOR),
     vcolor: sample([-COLOR_STEP, COLOR_STEP])
   };
