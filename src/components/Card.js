@@ -12,36 +12,10 @@ const CardRoot = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    box-sizing: border-box;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: ${BORDER_RADIUS}px;
-    border: 2px solid black;
-  }
-`;
-
-const Content = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 1rem;
-
-  h1 {
-    margin: 0;
-    padding: 0;
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 3rem;
-    vertical-align: top;
-  }
-
-  em {
-    color: #e3e3e3;
-  }
-
-  > div:last-child {
-    flex: 1;
+    border: 1px solid black;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -49,10 +23,10 @@ const GravatarRoot = styled.div`
   display: block;
   width: ${GRAVATAR_SIZE}px;
   height: ${GRAVATAR_SIZE}px;
-  border-radius: ${BORDER_RADIUS}px;
   overflow: hidden;
-  border: 2px solid black;
   box-sizing: border-box;
+  border-bottom-left-radius: ${BORDER_RADIUS}px;
+  border-bottom-left-radius: ${BORDER_RADIUS}px;
 
   img {
     display: block;
@@ -65,10 +39,32 @@ const Gravatar = () => (
   </GravatarRoot>
 );
 
+const Content = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1rem;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 2.5rem;
+    vertical-align: top;
+    margin-bottom: 0.33rem;
+  }
+
+  em {
+    color: #e3e3e3;
+  }
+`;
+
 const SocialLinksRoot = styled.div`
   display: flex;
   align-items: center;
-  height: 100%;
 
   > *:not(:first-child) {
     margin-left: 0.66em;
