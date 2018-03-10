@@ -6,7 +6,7 @@ import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
 
 const GRAVATAR_SIZE = 128;
 const GRAVATAR_URL = 'http://gravatar.com/avatar/f16320597c08a8462094030bcee31207?size=' + GRAVATAR_SIZE;
-const ICON_SIZE = 40;
+const ICON_SIZE = 35;
 
 injectGlobal`
   html, body {
@@ -48,11 +48,13 @@ const RootLayout = styled.div`
 
 const PersonalInfo = styled.main`
   display: flex;
+  justify-content: space-between;
+  width: 440px;
+  height: ${GRAVATAR_SIZE}px;
 `;
 
 const Content = styled.div`
   height: 100%;
-  margin-left: 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,12 +97,13 @@ const SocialLinksRoot = styled.div`
   height: 100%;
 
   > *:not(:first-child) {
-    margin-left: 0.5em;
+    margin-left: 0.66em;
   }
 
   svg {
     fill: #ffffff;
     transition: fill 0.25s;
+    vertical-align: middle;
 
     &:hover {
       fill: #cccccc;
