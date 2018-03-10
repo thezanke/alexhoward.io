@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
+import { GRAVATAR_URL } from './App';
 
 const GRAVATAR_SIZE = 128;
-const GRAVATAR_URL = 'http://gravatar.com/avatar/f16320597c08a8462094030bcee31207?size=' + GRAVATAR_SIZE;
 const ICON_SIZE = 35;
 const BORDER_RADIUS = GRAVATAR_SIZE / 8;
 
@@ -62,7 +62,7 @@ const GravatarRoot = styled.div`
 
 const Gravatar = () => (
   <GravatarRoot>
-    <img src={GRAVATAR_URL} alt="gravatar" />
+    <img src={`${GRAVATAR_URL}?size=${GRAVATAR_SIZE}`} alt="gravatar" />
   </GravatarRoot>
 );
 

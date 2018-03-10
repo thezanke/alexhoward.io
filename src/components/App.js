@@ -1,8 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
 import BackgroundAnimation from './BackgroundAnimation';
 import Card from './Card';
+
+export const GRAVATAR_URL = 'http://gravatar.com/avatar/f16320597c08a8462094030bcee31207';
+
+const FAVICON_GRAVATAR_URL = `${GRAVATAR_URL}?size=32`;
 
 injectGlobal`
   html, body {
@@ -38,15 +42,26 @@ const ContentHolder = styled.div`
   background-color: rgba(0, 0, 0, 0.66);
 `;
 
-const App = () => (
-  <Fragment>
-    <BackgroundHolder>
-      <BackgroundAnimation />
-    </BackgroundHolder>
-    <ContentHolder>
-      <Card />
-    </ContentHolder>
-  </Fragment>
-);
+class App extends PureComponent {
+  componentDidMount() {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = FAVICON_GRAVATAR_URL;
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }
+  render() {
+    return (
+      <Fragment>
+        <BackgroundHolder>
+          <BackgroundAnimation />
+        </BackgroundHolder>
+        <ContentHolder>
+          <Card />
+        </ContentHolder>
+      </Fragment>
+    );
+  }
+}
 
 export default App;
