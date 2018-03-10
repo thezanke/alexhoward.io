@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
 import throttle from 'lodash/throttle';
 import random from 'lodash/random';
+import sample from 'lodash/sample';
 
 class BackgroundAnimation extends PureComponent {
   circle = {
     x: random(0, window.innerWidth),
     y: random(0, window.innerHeight),
     r: 10,
-    vx: 4,
-    vy: 4,
+    vx: sample([-4, 4]),
+    vy: sample([-4, 4]),
     color: 125
   };
 
