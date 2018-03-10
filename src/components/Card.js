@@ -74,6 +74,14 @@ const SocialLinksRoot = styled.div`
     margin-left: 0.66em;
   }
 
+  a,
+  a:hover,
+  a:active,
+  a:visited,
+  a:focus {
+    text-decoration: none;
+  }
+
   svg {
     fill: #ffffff;
     transition: fill 0.25s;
