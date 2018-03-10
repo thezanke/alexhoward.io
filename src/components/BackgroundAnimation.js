@@ -4,7 +4,7 @@ import random from 'lodash/random';
 import sample from 'lodash/sample';
 
 const MIN_COLOR = 145;
-const MAX_COLOR = 235;
+const MAX_COLOR = 225;
 
 const makeCircle = () => {
   const r = 10;
@@ -14,11 +14,11 @@ const makeCircle = () => {
       ? [random(0, window.innerWidth), sample([-r / 2, window.innerHeight + r / 2])]
       : [sample([-r / 2, window.innerWidth + r / 2]), random(0, window.innerHeight)];
 
-  return { x, y, r: 10, vx: sample([-4, 4]), vy: sample([-4, 4]), color: (MIN_COLOR + MAX_COLOR) / 2, vcolor: -0.5 };
+  return { x, y, r: 10, vx: sample([-4, 4]), vy: sample([-4, 4]), color: (MIN_COLOR + MAX_COLOR) / 2, vcolor: -0.25 };
 };
 
 class BackgroundAnimation extends PureComponent {
-  circles = [makeCircle(), makeCircle()];
+  circles = [makeCircle(), makeCircle(), makeCircle(), makeCircle()];
 
   componentDidMount() {
     window.addEventListener('resize', throttle(this.resizeCanvas).bind(this));

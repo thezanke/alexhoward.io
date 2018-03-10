@@ -5,7 +5,7 @@ import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
 
 const GRAVATAR_SIZE = 128;
 const ICON_SIZE = 35;
-const BORDER_RADIUS = GRAVATAR_SIZE / 8;
+const BORDER_RADIUS = 8;
 
 const CardRoot = styled.div`
   > div:first-child {
@@ -13,9 +13,8 @@ const CardRoot = styled.div`
     flex-direction: row;
     justify-content: space-between;
     box-sizing: border-box;
-    width: 460px;
-    padding: 0.8rem;
-    background-color: rgba(0, 0, 0, 0.66);
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: ${BORDER_RADIUS}px;
     border: 2px solid black;
   }
@@ -26,6 +25,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 1rem;
 
   h1 {
     margin: 0;
