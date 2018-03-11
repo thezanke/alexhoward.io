@@ -29,6 +29,7 @@ const GravatarRoot = styled.div`
 
   img {
     display: block;
+    user-select: none;
   }
 `;
 
