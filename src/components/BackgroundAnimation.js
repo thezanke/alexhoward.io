@@ -9,6 +9,8 @@ import PowerMode from './PowerMode';
 const MIN_COLOR = 152;
 const MAX_COLOR = 208;
 const COLOR_STEP = 0.25;
+const R = 15;
+const V = 5;
 
 const makeCircle = () => {
   const r = 10;
@@ -21,9 +23,9 @@ const makeCircle = () => {
   return {
     x,
     y,
-    r: 10,
-    vx: sample([-3, 3]),
-    vy: sample([-3, 3]),
+    r: R,
+    vx: sample([-V, V]),
+    vy: sample([-V, V]),
     color: random(MIN_COLOR, MAX_COLOR),
     vcolor: sample([-COLOR_STEP, COLOR_STEP])
   };
@@ -34,6 +36,7 @@ const Canvas = styled.canvas`
 `;
 
 class BackgroundAnimation extends PureComponent {
+  lastUpdate = 0;
   state = { count: 0 };
   circles = [];
 
@@ -55,24 +58,17 @@ class BackgroundAnimation extends PureComponent {
     this.setState({ count: this.circles.length });
   };
 
-  animate = () => {
-    const { canvas, circles, ctx } = this;
-
-    circles.forEach(circle => {
-      ctx.fillStyle = `hsl(${circle.color}, 100%, 50%)`;
-      ctx.beginPath();
-      ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, true);
-      ctx.fill();
-
+  update = () => {
+    this.circles.forEach(circle => {
       if (
         (circle.x - circle.r + circle.vx < 0 && circle.vx < 0) ||
-        (circle.x + circle.r + circle.vx > canvas.width && circle.vx > 0)
+        (circle.x + circle.r + circle.vx > this.canvas.width && circle.vx > 0)
       ) {
         circle.vx = -circle.vx;
       }
 
       if (
-        (circle.y + circle.r + circle.vy > canvas.height && circle.vy > 0) ||
+        (circle.y + circle.r + circle.vy > this.canvas.height && circle.vy > 0) ||
         (circle.y - circle.r + circle.vy < 0 && circle.vy < 0)
       ) {
         circle.vy = -circle.vy;
@@ -87,8 +83,22 @@ class BackgroundAnimation extends PureComponent {
 
       circle.color += circle.vcolor;
     });
+  };
 
+  animate = time => {
     requestAnimationFrame(this.animate);
+
+    if (time - this.lastUpdate >= 1000 / 60) {
+      this.update();
+      this.lastUpdate = time;
+    }
+
+    this.circles.forEach(circle => {
+      this.ctx.fillStyle = `hsl(${circle.color}, 100%, 50%)`;
+      this.ctx.beginPath();
+      this.ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, true);
+      this.ctx.fill();
+    });
   };
 
   resizeCanvas() {
