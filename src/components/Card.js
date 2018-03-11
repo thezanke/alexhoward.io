@@ -22,8 +22,10 @@ const CardRoot = styled.div`
     border-radius: ${BORDER_RADIUS}px;
     border: 1px solid black;
     box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.8);
+  }
 
-    @media (max-width: ${SMALL_SCREEN_SIZE}px) {
+  @media (max-width: ${SMALL_SCREEN_SIZE}px) {
+    > div:first-child {
       flex-direction: column;
       justify-content: space-around;
       padding: 1rem;
