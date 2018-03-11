@@ -14,7 +14,7 @@ injectGlobal`
   }
 
   body {
-    background-color: #1a1a1a;
+    background-color: #0f0f0f;
     color: white;
   }
 `;
@@ -40,7 +40,7 @@ const ContentHolder = styled.div`
 class App extends PureComponent {
   handler = null;
 
-  specialClick = () => {
+  onClick = () => {
     if (this.handler) {
       this.handler();
     }
@@ -56,7 +56,7 @@ class App extends PureComponent {
         <BackgroundHolder>
           <BackgroundAnimation registerHandler={this.registerHandler} />
         </BackgroundHolder>
-        <ContentHolder onClick={this.specialClick}>
+        <ContentHolder onClick={this.onClick}>
           <Card />
         </ContentHolder>
       </Fragment>

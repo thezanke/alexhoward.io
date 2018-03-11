@@ -4,6 +4,8 @@ import random from 'lodash/random';
 import sample from 'lodash/sample';
 import styled from 'styled-components';
 
+import PowerMode from './PowerMode';
+
 const MIN_COLOR = 145;
 const MAX_COLOR = 215;
 const COLOR_STEP = 0.5;
@@ -13,14 +15,8 @@ const makeCircle = () => {
 
   const [x, y] =
     random(true) > 0.5
-      ? [
-          random(0, window.innerWidth),
-          sample([-r / 2, window.innerHeight + r / 2])
-        ]
-      : [
-          sample([-r / 2, window.innerWidth + r / 2]),
-          random(0, window.innerHeight)
-        ];
+      ? [random(0, window.innerWidth), sample([-r / 2, window.innerHeight + r / 2])]
+      : [sample([-r / 2, window.innerWidth + r / 2]), random(0, window.innerHeight)];
 
   return {
     x,
@@ -35,17 +31,6 @@ const makeCircle = () => {
 
 const Canvas = styled.canvas`
   opacity: 0.6;
-`;
-
-const Count = styled.div`
-  position: absolute;
-  top: 5px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: #eee;
-  font-weight: 400;
-  text-shadow: 1px 1px 1px black;
 `;
 
 class BackgroundAnimation extends PureComponent {
@@ -123,7 +108,7 @@ class BackgroundAnimation extends PureComponent {
     return (
       <Fragment>
         <Canvas innerRef={this.saveCanvasRef} onClick={this.addCircle} />
-        {count > 10 && <Count>{count}</Count>}
+        {count >= 10 && <PowerMode count={count} />}
       </Fragment>
     );
   }

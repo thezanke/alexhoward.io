@@ -8,6 +8,8 @@ const ICON_SIZE = 35;
 const BORDER_RADIUS = 8;
 
 const CardRoot = styled.div`
+  user-select: none;
+
   > div:first-child {
     display: flex;
     flex-direction: row;
@@ -29,7 +31,6 @@ const GravatarRoot = styled.div`
 
   img {
     display: block;
-    user-select: none;
   }
 `;
 
