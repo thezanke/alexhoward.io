@@ -6,8 +6,8 @@ import styled from 'styled-components';
 
 import PowerMode from './PowerMode';
 
-const MIN_COLOR = 152;
-const MAX_COLOR = 208;
+const MIN_COLOR = 148;
+const MAX_COLOR = 200;
 const COLOR_STEP = 0.25;
 const R = 15;
 const V = 5;
@@ -32,7 +32,7 @@ const makeCircle = () => {
 };
 
 const Canvas = styled.canvas`
-  opacity: 0.75;
+  opacity: 0.9;
 `;
 
 class BackgroundAnimation extends PureComponent {
@@ -92,6 +92,10 @@ class BackgroundAnimation extends PureComponent {
       this.update();
       this.lastUpdate = time;
     }
+
+    // this.ctx.fillStyle = 'black';
+    // this.ctx.rect(0, 0, window.innerWidth, window.innerHeight);
+    // this.ctx.fill();
 
     this.circles.forEach(circle => {
       this.ctx.fillStyle = `hsl(${circle.color}, 100%, 50%)`;

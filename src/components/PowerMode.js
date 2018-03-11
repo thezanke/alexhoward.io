@@ -17,6 +17,8 @@ const Count = styled.div`
   text-shadow: 1px 1px 1px black;
 `;
 
+// TODO: ball mode
+
 const PowerMode = ({ count }) =>
   createPortal(
     <PowerModeRoot>
