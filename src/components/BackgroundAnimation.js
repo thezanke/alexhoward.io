@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 import PowerMode from './PowerMode';
 
-const MIN_COLOR = 145;
-const MAX_COLOR = 215;
-const COLOR_STEP = 0.5;
+const MIN_COLOR = 152;
+const MAX_COLOR = 208;
+const COLOR_STEP = 0.25;
 
 const makeCircle = () => {
   const r = 10;
@@ -30,7 +30,7 @@ const makeCircle = () => {
 };
 
 const Canvas = styled.canvas`
-  opacity: 0.6;
+  opacity: 0.75;
 `;
 
 class BackgroundAnimation extends PureComponent {

@@ -5,7 +5,7 @@ import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
 
 const GRAVATAR_SIZE = 128;
 const ICON_SIZE = 35;
-const BORDER_RADIUS = 8;
+const BORDER_RADIUS = 4;
 
 const CardRoot = styled.div`
   user-select: none;
@@ -28,6 +28,7 @@ const GravatarRoot = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   border-radius: ${BORDER_RADIUS}px;
+  border-right: 1px solid black;
 
   img {
     display: block;
