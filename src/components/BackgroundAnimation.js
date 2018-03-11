@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import throttle from 'lodash/throttle';
 import random from 'lodash/random';
 import sample from 'lodash/sample';
+import styled from 'styled-components';
 
 const MIN_COLOR = 145;
 const MAX_COLOR = 215;
@@ -12,8 +13,14 @@ const makeCircle = () => {
 
   const [x, y] =
     random(true) > 0.5
-      ? [random(0, window.innerWidth), sample([-r / 2, window.innerHeight + r / 2])]
-      : [sample([-r / 2, window.innerWidth + r / 2]), random(0, window.innerHeight)];
+      ? [
+          random(0, window.innerWidth),
+          sample([-r / 2, window.innerHeight + r / 2])
+        ]
+      : [
+          sample([-r / 2, window.innerWidth + r / 2]),
+          random(0, window.innerHeight)
+        ];
 
   return {
     x,
@@ -26,13 +33,42 @@ const makeCircle = () => {
   };
 };
 
+const Canvas = styled.canvas`
+  opacity: 0.6;
+`;
+
+const Count = styled.div`
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #eee;
+  font-weight: 400;
+  text-shadow: 1px 1px 1px black;
+`;
+
 class BackgroundAnimation extends PureComponent {
-  circles = [makeCircle(), makeCircle(), makeCircle(), makeCircle()];
+  state = { count: 0 };
+  circles = [];
 
   componentDidMount() {
+    const { registerHandler } = this.props;
+    registerHandler(this.addCircle);
     window.addEventListener('resize', throttle(this.resizeCanvas).bind(this));
     this.init();
   }
+
+  init() {
+    this.resizeCanvas();
+    this.addCircle();
+    requestAnimationFrame(this.animate);
+  }
+
+  addCircle = () => {
+    this.circles.push(makeCircle());
+    this.setState({ count: this.circles.length });
+  };
 
   animate = () => {
     const { canvas, circles, ctx } = this;
@@ -70,11 +106,6 @@ class BackgroundAnimation extends PureComponent {
     requestAnimationFrame(this.animate);
   };
 
-  init() {
-    this.resizeCanvas();
-    requestAnimationFrame(this.animate);
-  }
-
   resizeCanvas() {
     const { innerWidth, innerHeight } = window;
     this.canvas.width = innerWidth;
@@ -87,7 +118,14 @@ class BackgroundAnimation extends PureComponent {
   };
 
   render() {
-    return <canvas ref={this.saveCanvasRef} />;
+    const { count } = this.state;
+
+    return (
+      <Fragment>
+        <Canvas innerRef={this.saveCanvasRef} onClick={this.addCircle} />
+        {count > 10 && <Count>{count}</Count>}
+      </Fragment>
+    );
   }
 }
 

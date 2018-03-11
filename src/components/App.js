@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
 import BackgroundAnimation from './BackgroundAnimation';
@@ -35,18 +35,33 @@ const ContentHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.45);
 `;
 
-const App = () => (
-  <Fragment>
-    <BackgroundHolder>
-      <BackgroundAnimation />
-    </BackgroundHolder>
-    <ContentHolder>
-      <Card />
-    </ContentHolder>
-  </Fragment>
-);
+class App extends PureComponent {
+  handler = null;
+
+  specialClick = () => {
+    if (this.handler) {
+      this.handler();
+    }
+  };
+
+  registerHandler = fn => {
+    this.handler = fn;
+  };
+
+  render() {
+    return (
+      <Fragment>
+        <BackgroundHolder>
+          <BackgroundAnimation registerHandler={this.registerHandler} />
+        </BackgroundHolder>
+        <ContentHolder onClick={this.specialClick}>
+          <Card />
+        </ContentHolder>
+      </Fragment>
+    );
+  }
+}
 
 export default App;
