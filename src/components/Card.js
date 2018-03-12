@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
 
-const GRAVATAR_URL_BASE = 'https://gravatar.com/avatar/f16320597c08a8462094030bcee31207';
-const GRAVATAR_SMALL = 128;
-const GRAVATAR_LARGE = 265;
+const GRAVATAR_URL_BASE =
+  'https://gravatar.com/avatar/f16320597c08a8462094030bcee31207';
+const AVATAR_LG_SCREEN = 150;
+const AVATAR_SM_SCREEN = 265;
 const ICON_SIZE = 35;
 const BORDER_RADIUS = 4;
 const SMALL_SCREEN_SIZE = 500;
@@ -33,19 +34,19 @@ const CardRoot = styled.div`
 
 const Gravatar = styled.div`
   display: block;
-  width: ${GRAVATAR_SMALL}px;
-  height: ${GRAVATAR_SMALL}px;
+  width: ${AVATAR_LG_SCREEN}px;
+  height: ${AVATAR_LG_SCREEN}px;
   overflow: hidden;
   box-sizing: border-box;
   border-top-left-radius: ${BORDER_RADIUS}px;
   border-bottom-left-radius: ${BORDER_RADIUS}px;
   border-right: 1px solid black;
-  background-image: url('${GRAVATAR_URL_BASE}?size=${GRAVATAR_SMALL}');
+  background-image: url('${GRAVATAR_URL_BASE}?size=${AVATAR_LG_SCREEN}');
 
   @media (max-width: ${SMALL_SCREEN_SIZE}px) {
-    width: ${GRAVATAR_LARGE}px;
-    height: ${GRAVATAR_LARGE}px;
-    background-image: url('${GRAVATAR_URL_BASE}?size=${GRAVATAR_LARGE}');
+    width: ${AVATAR_SM_SCREEN}px;
+    height: ${AVATAR_SM_SCREEN}px;
+    background-image: url('${GRAVATAR_URL_BASE}?size=${AVATAR_SM_SCREEN}');
     border-right: none;
     border-bottom: 1px solid black;
     border-top-right-radius: ${BORDER_RADIUS}px;
@@ -55,14 +56,19 @@ const Gravatar = styled.div`
 `;
 
 const Content = styled.div`
-  height: 100%;
+  flex: 1 1 auto;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding: 0 1rem;
+  justify-content: center;
+
+  h1,
+  h2 {
+    margin: 0;
+  }
 
   h1 {
-    margin: 0 0 0.33rem;
+    margin-bottom: 0.5rem;
     padding: 0;
     font-family: Helvetica, sans-serif;
     font-weight: 400;
@@ -71,7 +77,11 @@ const Content = styled.div`
     vertical-align: top;
   }
 
-  em {
+  h2 {
+    margin-bottom: 0.75rem;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1rem;
     color: #e3e3e3;
   }
 
@@ -115,19 +125,30 @@ const SocialLinksRoot = styled.div`
 
   @media (max-width: ${SMALL_SCREEN_SIZE}px) {
     justify-content: center;
-    margin-top: 0.5rem;
   }
 `;
 
 const SocialLinks = () => (
   <SocialLinksRoot>
-    <a href="https://www.github.com/thezanke" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.github.com/thezanke"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <GithubIcon size={ICON_SIZE} />
     </a>
-    <a href="https://www.twitter.com/thezanke" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.twitter.com/thezanke"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <TwitterIcon size={ICON_SIZE} />
     </a>
-    <a href="https://www.linkedin.com/in/alex-howard-9597a957/" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.linkedin.com/in/alex-howard-9597a957/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <LinkedinIcon size={ICON_SIZE} />
     </a>
   </SocialLinksRoot>
@@ -139,17 +160,13 @@ const Card = () => (
       <div>
         <Gravatar />
       </div>
-      <div>
-        <Content>
-          <div>
-            <h1>Alex Howard</h1>
-            <em>Giant Software Developer</em>
-          </div>
-          <div>
-            <SocialLinks />
-          </div>
-        </Content>
-      </div>
+      <Content>
+        <h1>Alex Howard</h1>
+        <h2>Giant Software Developer</h2>
+        <div>
+          <SocialLinks />
+        </div>
+      </Content>
     </div>
   </CardRoot>
 );
