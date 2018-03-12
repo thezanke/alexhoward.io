@@ -37,8 +37,13 @@ const Canvas = styled.canvas`
 
 class BackgroundAnimation extends PureComponent {
   lastUpdate = 0;
-  state = { count: 0 };
   circles = [];
+
+  state = {
+    count: 0,
+    enabled: false,
+    clearEveryFrame: false
+  };
 
   componentDidMount() {
     const { registerHandler } = this.props;
@@ -93,9 +98,9 @@ class BackgroundAnimation extends PureComponent {
       this.lastUpdate = time;
     }
 
-    // this.ctx.fillStyle = 'black';
-    // this.ctx.rect(0, 0, window.innerWidth, window.innerHeight);
-    // this.ctx.fill();
+    if (this.state.clearEveryFrame) {
+      this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    }
 
     this.circles.forEach(circle => {
       this.ctx.fillStyle = `hsl(${circle.color}, 100%, 50%)`;
@@ -116,13 +121,15 @@ class BackgroundAnimation extends PureComponent {
     this.ctx = canvas.getContext('2d');
   };
 
+  powerModeActions = {};
+
   render() {
-    const { count } = this.state;
+    const { count, enabled } = this.state;
 
     return (
       <Fragment>
         <Canvas innerRef={this.saveCanvasRef} onClick={this.addCircle} />
-        {count >= 10 && <PowerMode count={count} />}
+        <PowerMode actions={this.powerModeActions} {...this.state} />
       </Fragment>
     );
   }

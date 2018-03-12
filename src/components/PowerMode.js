@@ -19,12 +19,15 @@ const Count = styled.div`
 
 // TODO: ball mode
 
-const PowerMode = ({ count }) =>
-  createPortal(
+const PowerMode = ({ count }) => {
+  if (count < 10) return null;
+
+  return createPortal(
     <PowerModeRoot>
       <Count>{count}</Count>
     </PowerModeRoot>,
     document.getElementById('root')
   );
+};
 
 export default PowerMode;

@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 import { LinkedinIcon, GithubIcon, TwitterIcon } from './icons';
 
-const GRAVATAR_URL_BASE =
-  'https://gravatar.com/avatar/f16320597c08a8462094030bcee31207';
+const GRAVATAR_URL_BASE = 'https://gravatar.com/avatar/f16320597c08a8462094030bcee31207';
 const GRAVATAR_SMALL = 128;
-const GRAVATAR_LARGE = 200;
+const GRAVATAR_LARGE = 265;
 const ICON_SIZE = 35;
 const BORDER_RADIUS = 4;
 const SMALL_SCREEN_SIZE = 500;
@@ -28,7 +27,6 @@ const CardRoot = styled.div`
     > div:first-child {
       flex-direction: column;
       justify-content: space-around;
-      padding: 1rem;
     }
   }
 `;
@@ -39,7 +37,8 @@ const Gravatar = styled.div`
   height: ${GRAVATAR_SMALL}px;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: ${BORDER_RADIUS}px;
+  border-top-left-radius: ${BORDER_RADIUS}px;
+  border-bottom-left-radius: ${BORDER_RADIUS}px;
   border-right: 1px solid black;
   background-image: url('${GRAVATAR_URL_BASE}?size=${GRAVATAR_SMALL}');
 
@@ -47,7 +46,10 @@ const Gravatar = styled.div`
     width: ${GRAVATAR_LARGE}px;
     height: ${GRAVATAR_LARGE}px;
     background-image: url('${GRAVATAR_URL_BASE}?size=${GRAVATAR_LARGE}');
-    border: 1px solid black;
+    border-right: none;
+    border-bottom: 1px solid black;
+    border-top-right-radius: ${BORDER_RADIUS}px;
+    border-bottom-left-radius: 0;
     margin: 0 auto;
   }
 `;
@@ -76,7 +78,7 @@ const Content = styled.div`
   @media (max-width: ${SMALL_SCREEN_SIZE}px) {
     text-align: center;
     padding: 0;
-    margin-top: 0.75rem;
+    margin: 1rem 0;
 
     h1 {
       font-size: 2.5rem;
@@ -119,25 +121,13 @@ const SocialLinksRoot = styled.div`
 
 const SocialLinks = () => (
   <SocialLinksRoot>
-    <a
-      href="https://www.github.com/thezanke"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href="https://www.github.com/thezanke" target="_blank" rel="noopener noreferrer">
       <GithubIcon size={ICON_SIZE} />
     </a>
-    <a
-      href="https://www.twitter.com/thezanke"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href="https://www.twitter.com/thezanke" target="_blank" rel="noopener noreferrer">
       <TwitterIcon size={ICON_SIZE} />
     </a>
-    <a
-      href="https://www.linkedin.com/in/alex-howard-9597a957/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href="https://www.linkedin.com/in/alex-howard-9597a957/" target="_blank" rel="noopener noreferrer">
       <LinkedinIcon size={ICON_SIZE} />
     </a>
   </SocialLinksRoot>
