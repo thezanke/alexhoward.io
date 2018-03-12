@@ -45,7 +45,9 @@ class App extends PureComponent {
       this.handler();
     }
 
-    window.gtag('event', 'click', { event_category: 'interaction' })
+    if (process.env.NODE_ENV === 'production') {
+      window.gtag('event', 'click', { event_category: 'interaction' });
+    }
   };
 
   registerHandler = fn => {
