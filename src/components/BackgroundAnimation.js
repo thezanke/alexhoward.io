@@ -124,8 +124,6 @@ class BackgroundAnimation extends PureComponent {
   powerModeActions = {};
 
   render() {
-    const { count, enabled } = this.state;
-
     return (
       <Fragment>
         <Canvas innerRef={this.saveCanvasRef} onClick={this.addCircle} />
