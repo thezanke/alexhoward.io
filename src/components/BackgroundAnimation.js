@@ -17,8 +17,8 @@ const makeCircle = () => {
 
   const [x, y] =
     random(true) > 0.5
-      ? [random(0, window.innerWidth), sample([-r / 2, window.innerHeight + r / 2])]
-      : [sample([-r / 2, window.innerWidth + r / 2]), random(0, window.innerHeight)];
+      ? [random(r, window.innerWidth - r), sample([r, window.innerHeight - r])]
+      : [sample([r, window.innerWidth - r]), random(r, window.innerHeight -r)];
 
   return {
     x,
@@ -47,6 +47,7 @@ class BackgroundAnimation extends PureComponent {
 
   componentDidMount() {
     const { registerHandler } = this.props;
+
     registerHandler(this.addCircle);
     window.addEventListener('resize', throttle(this.resizeCanvas).bind(this));
     this.init();
@@ -112,6 +113,7 @@ class BackgroundAnimation extends PureComponent {
 
   resizeCanvas() {
     const { innerWidth, innerHeight } = window;
+
     this.canvas.width = innerWidth;
     this.canvas.height = innerHeight;
   }
