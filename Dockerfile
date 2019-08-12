@@ -2,11 +2,10 @@
 FROM node:latest as builder
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
-RUN yarn --silent --production
+RUN npm i --silent --production
 COPY . /usr/src/app
-RUN yarn run build
+RUN npm run build
 
 # production environment
 FROM nginx:latest
