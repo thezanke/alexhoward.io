@@ -53,4 +53,4 @@ jobs:
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_NAME }}
       - name: Update K8s Deployment
-        run: kubectl rollout restart statefulset ph8 -n apps
+        run: kubectl rollout restart deployment alexhoward-io -n apps
