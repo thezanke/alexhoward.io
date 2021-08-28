@@ -8,7 +8,7 @@ COPY . /usr/src/app
 RUN npm run build
 
 # production environment
-FROM nginx:latest
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+FROM steebchen/nginx-spa:stable
+COPY --from=builder /usr/src/app/build/ /app
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx"]
