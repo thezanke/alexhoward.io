@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alexhoward.io
+  name: alexhoward-io
   namespace: apps
 spec:
   strategy:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: alexhoward.io
+      app: alexhoward-io
   replicas: 1
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: alexhoward.io
+        app: alexhoward-io
     spec:
       containers:
-        - name: alexhoward.io
+        - name: alexhoward-io
           image: ghcr.io/thezanke/alexhoward.io:latest
           ports:
             - containerPort: 80
