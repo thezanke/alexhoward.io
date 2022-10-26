@@ -11,11 +11,6 @@ metadata:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - alexhoward.io
-        - www.alexhoward.io
-      secretName: cert-alexhoward-io
   rules:
     - host: www.alexhoward.io
       http:
