@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-    - secretName: alexhoward-io-wildcard-crt
+    - secretName: alexhoward-io-crt
   rules:
     - host: www.alexhoward.io
       http:
