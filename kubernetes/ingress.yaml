@@ -6,7 +6,6 @@ metadata:
   namespace: apps
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
 spec:
@@ -14,7 +13,6 @@ spec:
   tls:
     - hosts:
       - www.alexhoward.io
-      secretName: alexhoward-io-wildcard-crt
   rules:
     - host: www.alexhoward.io
       http:
