@@ -33,3 +33,13 @@ spec:
                 name: alexhoward-io
                 port:
                   number: 80
+    - host: bendro.alexhoward.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: alexhoward-io
+                port:
+                  number: 80
