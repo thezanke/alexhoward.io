@@ -1,5 +1,5 @@
 # build environment
-FROM node:latest as builder
+FROM node:16.15-slim as builder
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 COPY package.json /usr/src/app/package.json
