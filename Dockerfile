@@ -10,5 +10,4 @@ RUN npm run build
 # production environment
 FROM steebchen/nginx-spa:stable
 COPY --from=builder /usr/src/app/build/ /app
-EXPOSE 80
 CMD ["nginx"]
